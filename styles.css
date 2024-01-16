@@ -1,78 +1,68 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
+
 body {
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 100vh;
-  background-color: #212121;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Raleway", Arial, sans-serif;
 }
 
-.line {
-  width: 300px;
-  border-bottom: 4px solid white;
+ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+li {
+  list-style: none;
+}
+
+a {
   position: relative;
-  animation: animateline 2s linear infinite;
+  display: block;
+  margin: 0 10px;
+  padding: 5px 10px;
+  color: #333;
+  font-size: 30px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.5s;
+  overflow: hidden;
 }
 
-.hexagon {
-  position: absolute;
-  left: 0;
-  bottom: 14px;
-  width: 50px;
-  height: 30px;
-  background-color: white;
-  animation: animatehexagon 2s linear infinite;
-}
-
-.hexagon:before {
+a:before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-  background-color: white;
-  transform: rotate(60deg);
+  height: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -100%;
+  background-color: #d63031;
+  transition: 0.5s;
 }
 
-.hexagon:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: white;
-  transform: rotate(-60deg);
+a:hover:before {
+  animation: line 0.5s linear forwards;
 }
 
-@keyframes animatehexagon {
+@keyframes line {
   0% {
-    left: 0;
+    left: -100%;
+    height: 4px;
   }
   50% {
-    left: calc(100% - 50px);
-    transform: rotate(720deg);
+    left: 0;
+    height: 4px;
   }
   100% {
     left: 0;
+    height: 100%;
+    z-index: -1;
   }
 }
 
-@keyframes animateline {
-  0% {
-    transform: rotate(30deg);
-  }
-  25% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(-30deg);
-  }
-  75% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(30deg);
-  }
+a:hover {
+  color: white;
 }
